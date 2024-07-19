@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+//import 'package:fluttertoast/fluttertoast.dart';
 import 'package:bot_toast/bot_toast.dart';
 /*
 https://github.com/MMMzq/bot_toast/tree/master
@@ -7,7 +7,6 @@ https://github.com/MMMzq/bot_toast/tree/master
 void main() {
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
