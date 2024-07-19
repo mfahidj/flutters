@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       builder: BotToastInit(),
       navigatorObservers: [BotToastNavigatorObserver()], //2. registered route observer=
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      //title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.lightGreen ,
       ),
