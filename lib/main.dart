@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:bot_toast/bot_toast.dart';
+/*
+https://github.com/MMMzq/bot_toast/tree/master
+*/
 void main() {
   runApp(const MyApp());
 }
@@ -11,59 +15,84 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter ',
+      builder: BotToastInit(),
+      navigatorObservers: [BotToastNavigatorObserver()], //2. registered route observer=
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        primarySwatch: Colors.lightGreen ,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home:  MyHomePage(),
     );
   }
 }
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
+class MyHomePage extends StatefulWidget
+{
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  State<StatefulWidget> createState() {
+    return MyHomeState();
   }
-
+}
+class MyHomeState extends State<MyHomePage>{
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {
+          BotToast.showText(text: "this is toast example...");
+          BotToast.showSimpleNotification(title: "init");
+          //BotToast.showLoading(); //popup a loading toast
+          BotToast.showAttachedWidget(
+              attachedBuilder: (_) => Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Icon(
+                    Icons.favorite,
+                    color: Colors.redAccent,
+                  ),
+                ),
+              ),
+              duration: Duration(seconds: 2),
+              target: Offset(520, 520));
+
+          //ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: const Text('snack')));            print(" print command...................");
+          }
+        ),
+        title: const Text("Home"),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.more_vert),
+            onPressed: () {},
+          ),
+        ],
+        flexibleSpace: const SafeArea(
+          child: Icon(
+            Icons.photo_camera,
+            size: 75.0,
+            color: Colors.white70,
+          ),
+        ),
+        bottom: PreferredSize(
+          child: Container(
+            color: Colors.lightGreen.shade100,
+            height: 75.0,
+            width: double.infinity,
+            child: Center(
+              child: Text('Bottom'),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+          ),
+          preferredSize: Size.fromHeight(75.0),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+
     );
   }
+
 }
+
