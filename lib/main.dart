@@ -1,6 +1,10 @@
+import 'RowWidget.dart';
 import 'package:flutter/material.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'ColumnAndRowNestingWidget.dart';
+import 'ContainerWithBoxDecorationWidget.dart';
+import 'ColumnWidget.dart';
 /*
 https://github.com/MMMzq/bot_toast/tree/master
 */
@@ -97,80 +101,18 @@ class MyHomeState extends State<MyHomePage>{
             child: Column(
               children: <Widget> [
                 const ContainerWithBoxDecorationWidget(),
+                Divider(),
+                const ColumnWidget(),
+                Divider(),
+                const RowWidget(),
+                Divider(),
+                const ColumnAndRowNestingWidget(),
               ],
             ),
           ),
         ),
       ),
-
     );
   }
-
 }//end of Home Class
-class ContainerWithBoxDecorationWidget extends StatelessWidget{
-  const ContainerWithBoxDecorationWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return  Column(
-      children: <Widget>
-      [
-        Container
-          (
-          height: 100.0,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(100.0),
-              bottomRight: Radius.circular(10.0),
-            ),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: <Color> [
-                Colors.white,
-                Colors.blue,
-              ],
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.white,
-                blurRadius: 10.0,
-                offset: Offset(0.0, 10.0),
-              )
-            ],
-          ),
-          child: Center(
-            child: RichText(
-              text: TextSpan(
-                text: 'Flutter World ',
-                style: TextStyle(
-                  fontSize: 24.0,
-                  color: Colors.black,
-                  decoration: TextDecoration.underline,
-                  decorationColor: Colors.black54,
-                  decorationStyle: TextDecorationStyle.dotted,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.normal,
-              ),
-                children: <InlineSpan>[
-                  TextSpan(
-                   text: 'for'
-                  ),
-                  TextSpan(
-                    text: ' Mobile',
-                    style: TextStyle(
-                        color: Colors.deepOrange,
-                        fontStyle: FontStyle.normal,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ],
-            ),
-          ),
-          ),
-        ),
-
-      ],
-    );
-  }
-}
 
