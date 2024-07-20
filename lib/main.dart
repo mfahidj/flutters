@@ -89,9 +89,61 @@ class MyHomeState extends State<MyHomePage>{
           preferredSize: Size.fromHeight(75.0),
         ),
       ),
-
+      //bottom part
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: <Widget> [
+                const ContainerWithBoxDecorationWidget(),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 
+}//end of Home Class
+class ContainerWithBoxDecorationWidget extends StatelessWidget{
+  const ContainerWithBoxDecorationWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return  Column(
+      children: <Widget>
+      [
+        Container
+          (
+          height: 100.0,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(100.0),
+              bottomRight: Radius.circular(10.0),
+            ),
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: <Color> [
+                Colors.white,
+                Colors.blue,
+              ],
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.white,
+                blurRadius: 10.0,
+                offset: Offset(0.0, 10.0),
+              )
+            ],
+          ),
+          child: const Center(
+            child: Text('Container..'),
+          ),
+       ),
+      ],
+    );
+  }
 }
 
