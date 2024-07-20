@@ -102,6 +102,7 @@ class MyHomeState extends State<MyHomePage>{
           ),
         ),
       ),
+
     );
   }
 
@@ -138,10 +139,36 @@ class ContainerWithBoxDecorationWidget extends StatelessWidget{
               )
             ],
           ),
-          child: const Center(
-            child: Text('Container..'),
+          child: Center(
+            child: RichText(
+              text: TextSpan(
+                text: 'Flutter World ',
+                style: TextStyle(
+                  fontSize: 24.0,
+                  color: Colors.black,
+                  decoration: TextDecoration.underline,
+                  decorationColor: Colors.black54,
+                  decorationStyle: TextDecorationStyle.dotted,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.normal,
+              ),
+                children: <InlineSpan>[
+                  TextSpan(
+                   text: 'for'
+                  ),
+                  TextSpan(
+                    text: ' Mobile',
+                    style: TextStyle(
+                        color: Colors.deepOrange,
+                        fontStyle: FontStyle.normal,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ],
+            ),
           ),
-       ),
+          ),
+        ),
+
       ],
     );
   }
